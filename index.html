@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Logoobj</title>
+    <title>Logo</title>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     
@@ -17,12 +17,12 @@
         <a-asset-item id="logo-obj" src="OTTRO2.obj"></a-asset-item>
         <a-asset-item id="logo-mtl" src="OTTRO2.mtl"></a-asset-item>
       </a-assets> 
-      <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+      <a-camera gps-new-camera='gpsMinDistance: 0.1' gpsTimeInterval="0"></a-camera>
       <!--
       <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.269097 ; longitude: -2.609038" scale="10 10 10"></a-entity>
       <a-entity gltf-model="#logo" gps-new-entity-place="latitude: 39.269073 ; longitude: -2.608991" scale="1 1 1" position="0 0 0"></a-entity>
       -->
-      <a-entity obj-model="obj: #logo-obj; mtl: #logo-mtl" gps-new-entity-place="latitude: 39.269073 ; longitude: -2.608991" scale="1 1 1" position="0 0 0"></a-entity>
+      <a-entity gltf-model="#logo" gps-new-entity-place="latitude: 39.269073 ; longitude: -2.608991" scale="1 1 1" position="0 0 0"></a-entity>
 
     </a-scene>
     </body>
