@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nuevo7</title>
+    <title>Nuevo8</title>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     
@@ -25,12 +25,7 @@
         <a-asset-item id="logo" src="OTTRO.gltf"></a-asset-item>
       </a-assets>
       
-      <a-text
-        value="No markers around"
-        look-at="[gps-camera]"
-        scale="5 5 5"
-      ></a-text>
-      <a-camera gps-camera="maxDistance: 40" rotation-reader></a-camera>
+      <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
       <!--
       <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
       <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.269097 ; longitude: -2.609038" scale="10 10 10"></a-entity>
@@ -40,7 +35,7 @@
     <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.270475  ; longitude: -2.606810" scale="10 10 10"></a-entity>
     -->
       
-      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 38.079549, -0.946473  ; longitude: -2.606810" scale="3 3 3"></a-entity>
+      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 38.079549  ; longitude: -0.9464730" scale="3 3 3"></a-entity>
       <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.270475  ; longitude: -2.606810" scale="10 10 10"></a-entity>
     </a-scene>
     </body>
