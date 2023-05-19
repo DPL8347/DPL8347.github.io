@@ -12,40 +12,13 @@
       <a-marker preset="geo"></a-marker>
       
       <!-- Imagen geolocalizada -->
-      <a-image id="image" src="tinaja.jpg" position="0 0 0" visible="false"></a-image>
+      <a-image id="image" src="tinaja.jpg" position="0 0 0" visible="true"></a-image>
       
       <!-- Cámara y controles -->
       <a-entity camera gps-camera-controls></a-entity>
     </a-scene>
 
-    <script>
-      // Coordenadas geográficas (ejemplo: Barcelona, España)
-      var latitude = 39.269056;
-      var longitude = -2.608972;
 
-      // Distancia de proximidad en metros
-      var proximidad = 25;
-
-      // Conversión de coordenadas geográficas a espaciales
-      var gpsUtil = new THREE.GPSUtils();
-      var position = gpsUtil.geographicToCartesianCoords(latitude, longitude);
-
-      // Actualizar la posición de la imagen en A-Frame
-      var imageElement = document.getElementById('image');
-      imageElement.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z);
-
-      // Actualizar la visibilidad de la imagen según la distancia de proximidad
-      function actualizarVisibilidad() {
-        var camera = document.querySelector('[gps-camera-controls]');
-        var distance = camera.getAttribute('position').distanceTo(imageElement.getAttribute('position'));
-        imageElement.setAttribute('visible', distance <= proximidad);
-      }
-
-      // Llama a la función de actualización de visibilidad en cada frame
-      document.querySelector('a-scene').addEventListener('loaded', function () {
-        this.querySelector('[gps-camera-controls]').addEventListener('positionChanged', actualizarVisibilidad);
-      });
-    </script>
   </body>
 </html>
 
