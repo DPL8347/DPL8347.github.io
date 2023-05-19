@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tour Virtual</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-sky id="sky" src="aula.jpg" rotation="0 -90 0"></a-sky>
+      
+      <a-entity id="punto1" position="0 0 -5" event-set__enter="_event: mouseenter; _target: #sky; _delay: 300; src: aula2.jpg"
+        event-set__leave="_event: mouseleave; _target: #sky; _delay: 300; src: imagen1.jpg">
+        <a-text value="Punto 1" align="center" position="0 1.5 0" visible="false"></a-text>
+        <a-sphere radius="0.5" color="red"></a-sphere>
+      </a-entity>
+
+      <a-entity id="punto2" position="5 0 0" event-set__enter="_event: mouseenter; _target: #sky; _delay: 300; src: aula2.jpg"
+        event-set__leave="_event: mouseleave; _target: #sky; _delay: 300; src: imagen1.jpg">
+        <a-text value="Punto 2" align="center" position="0 1.5 0" visible="false"></a-text>
+        <a-sphere radius="0.5" color="blue"></a-sphere>
+      </a-entity>
+
+      <a-entity id="punto3" position="0 0 5" event-set__enter="_event: mouseenter; _target: #sky; _delay: 300; src: aula2.jpg"
+        event-set__leave="_event: mouseleave; _target: #sky; _delay: 300; src: imagen1.jpg">
+        <a-text value="Punto 3" align="center" position="0 1.5 0" visible="false"></a-text>
+        <a-sphere radius="0.5" color="green"></a-sphere>
+      </a-entity>
+
+      <a-entity id="punto4" position="-5 0 0" event-set__enter="_event: mouseenter; _target: #sky; _delay: 300; src: aula2.jpg"
+        event-set__leave="_event: mouseleave; _target: #sky; _delay: 300; src: imagen1.jpg">
+        <a-text value="Punto 4" align="center" position="0 1.5 0" visible="false"></a-text>
+        <a-sphere radius="0.5" color="yellow"></a-sphere>
+      </a-entity>
+
+      <a-camera id="camera" position="0 0 0">
+        <a-cursor></a-cursor>
+      </a-camera>
+
+      <script>
+        setTimeout(function() {
+          var camera = document.getElementById('camera');
+          camera.setAttribute('animation__position', {
+            property: 'position',
+            dur: 150,
+            to: '0 0 -300',
+            easing: 'linear',
+            loop: false
+          });
+        }, 300);
+
+        
+      </script>
+    </a-scene>
+  </body>
+</html>
