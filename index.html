@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nuevo5</title>
-    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <meta charset="utf-8">
+    <title>Realidad Aumentada con A-Frame y AR.js</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    
-    <!-- AR.js A-Frame components -->
-    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-    
-    </head>
-    <body>
-      <!--
-      <a-scene vr-mode-ui='enabled: false' 
-        embedded
-        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+    <script src="https://cdn.rawgit.com/chrisguttandin/three-gps-util/v2.0.0/dist/three-gps-util.min.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+      <a-marker preset="geo"></a-marker>
       
-      <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false">
-
-      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-      -->
-      <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-      <a-assets>
-        <a-asset-item id="logo" src="OTTRO.gltf"></a-asset-item>
-      </a-assets>
+      <!-- Imagen geolocalizada -->
+      <a-image id="image" src="tinaja.jpg" position="0 0 0" visible="false"></a-image>
       
-      <a-camera gps-new-camera='minDistance: 1'></a-camera>
-      <!--
-      <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.269097 ; longitude: -2.609038" scale="10 10 10"></a-entity>
-      <a-entity gltf-model="#logo" gps-new-entity-place="latitude: 39.269073 ; longitude: -2.608991" scale="1 1 1" position="0 0 0"></a-entity>
-      
-    
-    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.270475  ; longitude: -2.606810" scale="10 10 10"></a-entity>
-    -->
-      
-      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 38.079549  ; longitude: -0.9464730" scale="3 3 3"></a-entity>
-      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.269056  ; longitude: -2.608972" scale="2 2 2"></a-entity>
+      <!-- Cámara y controles -->
+      <a-entity camera gps-camera-controls></a-entity>
     </a-scene>
-    </body>
-    </html>
+
+    <script>
+      // Coordenadas geográficas (ejemplo: Barcelona, España)
+      var latitude = 39.269056;
+      var longitude = -2.608972;
+
+      // Distancia de proximidad en metros
+      var proximidad = 5;
+
+      // Conversión de coordenadas geográficas a espaciales
+      var gpsUtil = new THREE.GPSUtils();
+      var position = gpsUtil.geographicToCartesianCoords(latitude, longitude);
+
+      // Actualizar la posición de la imagen en A-Frame
+      var imageElement = document.getElementById('image');
+      imageElement.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z);
+
+      // Actualizar la visibilidad de la imagen según la distancia de proximidad
+      function actualizarVisibilidad() {
+        var camera = document.querySelector('[gps-camera-controls]');
+        var distance = camera.getAttribute('position').distanceTo(imageElement.getAttribute('position'));
+        imageElement.setAttribute('visible', distance <= proximidad);
+      }
+
+      // Llama a la función de actualización de visibilidad en cada frame
+      document.querySelector('a-scene').addEventListener('loaded', function () {
+        this.querySelector('[gps-camera-controls]').addEventListener('positionChanged', actualizarVisibilidad);
+      });
+    </script>
+  </body>
+</html>
+
