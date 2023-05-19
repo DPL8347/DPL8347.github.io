@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Logo</title>
+    <title>Logo2</title>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     
@@ -12,8 +12,14 @@
     </head>
     <body>
     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.269097 ; longitude: -2.609038" scale="10 10 10"></a-entity>
+      <a-assets>
+        <a-asset-item id="logo" src="OTTRO.gltf"></a-asset-item>
+      </a-assets> 
+      <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+      <!--
+      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 39.269097 ; longitude: -2.609038" scale="10 10 10"></a-entity>
+      -->
+      <a-entity gltf-model="#tree" gps-new-entity-place="latitude: 39.269097 ; longitude: -2.609038" scale="10 10 10"></a-entity>
     </a-scene>
     </body>
     </html>
