@@ -14,12 +14,19 @@
       <a-scene
         vr-mode-ui="enabled: false" arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false;'>
 
+        <a-assets>
+          <a-asset-item id="logo" src="castillo.glb"></a-asset-item>
+        </a-assets>
+
         <!-- too near, is like 2m far -->
         <a-box material="color: red;" scale="25 25 25" gps-entity-place="latitude: 44.504493; longitude: 11.301134;"></a-box>
 
-        <!-- visible, is like 400m far -->
+        <!-- visible, is like 400m far 
         <a-box material="color: yellow;" scale="3 3 3" position="0 20 0" gps-entity-place="latitude: 39.261536374627475; longitude: -2.5907603664557444;"></a-box>
-
+        -->
+        
+        <a-entity gltf-model="#logo" scale="3 3 3" position="0 0 0" gps-entity-place="latitude: 39.261536374627475; longitude: -2.5907603664557444;"></a-entity>
+        
         <!-- too far, is like 2.5km far -->
         <a-box material="color: green;" scale="25 25 25" gps-entity-place="latitude: 39.26157035773604; longitude: -2.5900849359199154;"></a-box>
 
