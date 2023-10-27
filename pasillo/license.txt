@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wall with Gates
+* source:	https://sketchfab.com/3d-models/wall-with-gates-e87f42b2534d4e53967a7da22c9fcf58
+* author:	Gunnar Correa (https://sketchfab.com/gunnarcorrea)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wall with Gates" (https://sketchfab.com/3d-models/wall-with-gates-e87f42b2534d4e53967a7da22c9fcf58) by Gunnar Correa (https://sketchfab.com/gunnarcorrea) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
